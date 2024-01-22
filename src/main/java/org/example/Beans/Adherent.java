@@ -1,4 +1,4 @@
-package org.example.Modal;
+package org.example.Beans;
 
 import java.util.Date;
 
