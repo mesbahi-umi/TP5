@@ -30,7 +30,7 @@ public class Adherent {
     public int adherentID;
     public String nom;
     public String prenom;
-    public Date dateNaissance;
+    public Date dateInscription;
     public String telephone;
     public String login;
     public String motDePasse;
@@ -49,12 +49,12 @@ public class Adherent {
 
     public Adherent() {
     }
-    public Adherent(int adherentID, String nom, String prenom, Date dateNaissance, String telephone,
+    public Adherent(int adherentID, String nom, String prenom, Date dateInscription, String telephone,
                     String login, String motDePasse, double montantAPayer, String adresse, String sexe) {
         this.adherentID = adherentID;
         this.nom = nom;
         this.prenom = prenom;
-        this.dateNaissance = dateNaissance;
+        this.dateInscription = dateInscription;
         this.telephone = telephone;
         this.login = login;
         this.motDePasse = motDePasse;
@@ -63,19 +63,5 @@ public class Adherent {
         this.sexe = sexe;
     }
 
-    public String getLogin() {
-        return login;
-    }
 
-    public void setLogin(String login) {
-        this.login = login;
-    }
-
-    public String getMotDePasse() {
-        return motDePasse;
-    }
-
-    public void setMotDePasse(String motDePasse) {
-        this.motDePasse = motDePasse;
-    }
 }

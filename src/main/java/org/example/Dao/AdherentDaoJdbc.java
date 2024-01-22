@@ -7,19 +7,18 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class AdherentDaoJdbc implements AdherentDao {
-    private static final String DB_URL = "jdbc:mysql://localhost:3306/ClubDatabase";
+    private static final String DB_URL = "jdbc:mysql://localhost:3306/ClubDatabase?useSSL=false";
     private static final String DB_USERNAME = "root";
-    private static final String DB_PASSWORD = "";
+    private static final String DB_PASSWORD = "root";
     private static Connection connection;
 
     static {
         try {
-            Class.forName("com.mysql.jdbc.Driver");
+            Class.forName("com.mysql.cj.jdbc.Driver");
             connection = DriverManager.getConnection(DB_URL, DB_USERNAME, DB_PASSWORD);
+        }  catch (SQLException e) {
+            throw new RuntimeException(e);
         } catch (ClassNotFoundException e) {
-            System.out.println("Error while connecting to database");
-            System.out.println(e.getMessage());
-        } catch (SQLException e) {
             throw new RuntimeException(e);
         }
     }
@@ -58,7 +57,7 @@ public class AdherentDaoJdbc implements AdherentDao {
             PreparedStatement statement = connection.prepareStatement(query);
             statement.setString(1, adherent.nom);
             statement.setString(2, adherent.prenom);
-            statement.setDate(3, new java.sql.Date(adherent.dateNaissance.getTime()));
+            statement.setDate(3, new java.sql.Date(adherent.dateInscription.getTime()));
             statement.setString(4, adherent.telephone);
             statement.setString(5, adherent.login);
             statement.setString(6, adherent.motDePasse);
@@ -107,7 +106,7 @@ public class AdherentDaoJdbc implements AdherentDao {
                 adherent.adherentID = resultSet.getInt("AdherentID");
                 adherent.nom = resultSet.getString("Nom");
                 adherent.prenom = resultSet.getString("Prenom");
-                adherent.dateNaissance = resultSet.getDate("DateInscription");
+                adherent.dateInscription = resultSet.getDate("DateInscription");
                 adherent.telephone = resultSet.getString("Telephone");
                 adherent.login = resultSet.getString("Login");
                 adherent.motDePasse = resultSet.getString("MotDePasse");
@@ -144,7 +143,7 @@ public class AdherentDaoJdbc implements AdherentDao {
             PreparedStatement statement = connection.prepareStatement(query);
             statement.setString(1, adherent.nom);
             statement.setString(2, adherent.prenom);
-            statement.setDate(3, new java.sql.Date(adherent.dateNaissance.getTime()));
+            statement.setDate(3, new java.sql.Date(adherent.dateInscription.getTime()));
             statement.setString(4, adherent.telephone);
             statement.setString(5, adherent.login);
             statement.setString(6, adherent.motDePasse);
