@@ -58,6 +58,10 @@ public class HomeFrame extends JFrame {
             setVisible(false);
             DeleteAdherentFrame deleteAdherentFrame = new DeleteAdherentFrame("Supprimer Adherent", this);
         });
+        modifierMenuItem.addActionListener(e -> {
+            setVisible(false);
+            ModifieAdherentFrame modifieAdherentFrame = new ModifieAdherentFrame("Modifier Adherent", this);
+        });
 
 
         quitterMenuItem.addActionListener(e -> {

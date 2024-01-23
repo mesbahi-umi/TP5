@@ -7,8 +7,9 @@ import org.example.Presentation.controllers.ModifieAdherentAction;
 
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
+import java.awt.*;
+import java.text.SimpleDateFormat;
 import java.util.List;
-import java.util.stream.Collectors;
 
 public class ModifieAdherentFrame extends CustomedJFrame{
     // 1 - table to list all the adherents
@@ -17,17 +18,73 @@ public class ModifieAdherentFrame extends CustomedJFrame{
     // 4 - user can close the window
     JTable adherentsTable;
     public Adherent selectedAdherent;
-    JButton deleteBtn;
+
+    public JTextField nomTextField, prenomTextField, dateInscriptionTextField;
+    public JTextField telTextField, loginTextField, montantAPayerTextField;
+    public JPasswordField passwordTextField;
+    public JTextArea addressTextArea;
+
+    /* checkboxes */
+    public JCheckBox tennisCheckBox, squashCheckBox, natationCheckBox, athletiesmeCheckBox;
+    public JCheckBox randomneeCheckBox, footCheckBox, basketCheckBox, volleyCheckeBox, pelanqueCheckBox; // Add more as needed
+
+    /* radiobutton */
+    public JRadioButton maleRadioButton, femaleRadioButton;
+    public ButtonGroup genderGroup;
+
+    /* buttons */
+
+    public JPanel leftPanel;
+    public JPanel inputsPanle;
+    public JPanel rightPanel;
+    public JPanel genderPanel;
+    public JPanel buttonsPanel;
+
+    JButton modifyBtn;
     JButton closeBtn;
     public List<Adherent> adherentList;
-    JPanel buttonsPanel;
 
     public ModifieAdherentFrame(String title, JFrame parentFrame) {
         super(title, parentFrame);
+        setSize(800, 600);
         adherentsTable = new JTable();
         buttonsPanel = new JPanel();
-        deleteBtn = new JButton("Supprimer");
+        modifyBtn = new JButton("Modifier");
         closeBtn = new JButton("Fermer");
+
+        /* text Fields*/
+        nomTextField = new JTextField();
+        prenomTextField = new JTextField();
+        dateInscriptionTextField = new JTextField();
+        dateInscriptionTextField.setToolTipText("dd/mm/yyyy");
+        telTextField = new JTextField();
+        loginTextField = new JTextField();
+        passwordTextField = new JPasswordField();
+        montantAPayerTextField = new JTextField();
+        addressTextArea = new JTextArea();
+
+        /* checkBoxes */
+        tennisCheckBox = new JCheckBox("Tennis");
+        squashCheckBox = new JCheckBox("Squash");
+        natationCheckBox = new JCheckBox("Natation");
+        athletiesmeCheckBox = new JCheckBox("Athletiesme");
+        randomneeCheckBox = new JCheckBox("Randomnée");
+        footCheckBox = new JCheckBox("Foot");
+        basketCheckBox = new JCheckBox("Basket");
+        volleyCheckeBox = new JCheckBox("Volley");
+        pelanqueCheckBox = new JCheckBox("Pelanque");
+
+
+        /* radioButtons */
+        maleRadioButton = new JRadioButton("Homme");
+        femaleRadioButton = new JRadioButton("Femme");
+
+        // Create the panels
+        leftPanel = new JPanel();
+        inputsPanle = new JPanel();
+        rightPanel = new JPanel();
+        genderPanel = new JPanel();
+        buttonsPanel = new JPanel();
 
         configureUI();
         configureActions();
@@ -66,11 +123,87 @@ public class ModifieAdherentFrame extends CustomedJFrame{
         adherentsTable.setDefaultEditor(Object.class, null);
         // center
         buttonsPanel.setLayout(new BoxLayout(buttonsPanel, BoxLayout.X_AXIS));
-        buttonsPanel.add(deleteBtn);
+        buttonsPanel.add(modifyBtn);
         buttonsPanel.add(closeBtn);
         setLayout(new BoxLayout(getContentPane(), BoxLayout.Y_AXIS));
         setVisible(true);
         add(buttonsPanel);
+
+        JPanel container = new JPanel();
+        // Set the layout of the container frame to GridBagLayout
+        container.setLayout(new GridBagLayout());
+        // Create GridBagConstraints for leftPanel
+        GridBagConstraints leftPanelConstraints = new GridBagConstraints();
+        leftPanelConstraints.gridx = 0; // Start at column 0
+        leftPanelConstraints.gridy = 0; // Start at row 0
+        leftPanelConstraints.weightx = 0.75; // 75% of width
+        leftPanelConstraints.fill = GridBagConstraints.BOTH; // Fill both horizontally and vertically
+
+        // Add leftPanel to the frame with constraints
+        container.add(leftPanel, leftPanelConstraints);
+
+        // Create GridBagConstraints for rightPanel
+        GridBagConstraints rightPanelConstraints = new GridBagConstraints();
+        rightPanelConstraints.gridx = 1; // Start at column 1
+        rightPanelConstraints.gridy = 0; // Start at row 0
+        rightPanelConstraints.weightx = 0.25; // 25% of width
+        rightPanelConstraints.fill = GridBagConstraints.BOTH; // Fill both horizontally and vertically
+
+        // Add rightPanel to the frame with constraints
+        container.add(rightPanel, rightPanelConstraints);
+        // add BoxLayout layout to the panels
+        leftPanel.setLayout(new BoxLayout(leftPanel, BoxLayout.Y_AXIS));
+        inputsPanle.setLayout(new GridLayout(13, 1));
+        rightPanel.setLayout(new BoxLayout(rightPanel, BoxLayout.Y_AXIS));
+        genderPanel.setLayout(new FlowLayout());
+        buttonsPanel.setLayout(new FlowLayout());
+
+
+        // add labels and text fields to the left panel
+        inputsPanle.add(new JLabel("Nom"));
+        inputsPanle.add(nomTextField);
+        inputsPanle.add(new JLabel("Prenom"));
+        inputsPanle.add(prenomTextField);
+        inputsPanle.add(new JLabel("Date d'inscription"));
+        inputsPanle.add(dateInscriptionTextField);
+        inputsPanle.add(new JLabel("Telephone"));
+        inputsPanle.add(telTextField);
+        inputsPanle.add(new JLabel("Adresse"));
+        inputsPanle.add(addressTextArea);
+        leftPanel.add(inputsPanle);
+
+        // Group the radio buttons
+        genderGroup = new ButtonGroup();
+        genderGroup.add(maleRadioButton);
+        genderGroup.add(femaleRadioButton);
+        maleRadioButton.setSelected(true);
+        // add to genderPanel
+        genderPanel.add(new JLabel("Sexe"));
+        genderPanel.add(maleRadioButton);
+        genderPanel.add(femaleRadioButton);
+
+        // add genderPanel to the left panel
+        leftPanel.add(genderPanel);
+
+        // add buttons
+        buttonsPanel.add(modifyBtn);
+        buttonsPanel.add(closeBtn);
+
+        // add buttonsPanel to the left panel
+        leftPanel.add(buttonsPanel);
+
+        // add checkboxes to the right panel
+        rightPanel.add(tennisCheckBox);
+        rightPanel.add(squashCheckBox);
+        rightPanel.add(natationCheckBox);
+        rightPanel.add(athletiesmeCheckBox);
+        rightPanel.add(randomneeCheckBox);
+        rightPanel.add(footCheckBox);
+        rightPanel.add(basketCheckBox);
+        rightPanel.add(volleyCheckeBox);
+        rightPanel.add(pelanqueCheckBox);
+
+        add(container);
     }
 
     private void configureActions() {
@@ -80,25 +213,37 @@ public class ModifieAdherentFrame extends CustomedJFrame{
         select.addListSelectionListener(e -> {
             if (e.getValueIsAdjusting()) {
                 int row = adherentsTable.getSelectedRow();
-                selectedAdherent = new Adherent();
-                selectedAdherent.adherentID = (int) adherentsTable.getValueAt(row, 0);
-                selectedAdherent.nom = (String) adherentsTable.getValueAt(row, 1);
-                selectedAdherent.prenom = (String) adherentsTable.getValueAt(row, 2);
+                // populate the text fields and checkboxes
+                nomTextField.setText((String) adherentsTable.getValueAt(row, 1));
+                prenomTextField.setText((String) adherentsTable.getValueAt(row, 2));
+                SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd"); // Define the date format
+                String formattedDate = dateFormat.format(adherentsTable.getValueAt(row, 3)); // Format the date as a string
+                dateInscriptionTextField.setText(formattedDate);
+                telTextField.setText((String) adherentsTable.getValueAt(row, 4));
+                montantAPayerTextField.setText(adherentsTable.getValueAt(row, 5).toString());
+                addressTextArea.setText((String) adherentsTable.getValueAt(row, 6));
+                if (adherentsTable.getValueAt(row, 7).equals("Homme")) {
+                    maleRadioButton.setSelected(true);
+                } else {
+                    femaleRadioButton.setSelected(true);
+                }
+                tennisCheckBox.setSelected((boolean) adherentsTable.getValueAt(row, 8));
+                squashCheckBox.setSelected((boolean) adherentsTable.getValueAt(row, 9));
+                natationCheckBox.setSelected((boolean) adherentsTable.getValueAt(row, 10));
+                athletiesmeCheckBox.setSelected((boolean) adherentsTable.getValueAt(row, 11));
+                randomneeCheckBox.setSelected((boolean) adherentsTable.getValueAt(row, 12));
+                footCheckBox.setSelected((boolean) adherentsTable.getValueAt(row, 13));
+                basketCheckBox.setSelected((boolean) adherentsTable.getValueAt(row, 14));
+                volleyCheckeBox.setSelected((boolean) adherentsTable.getValueAt(row, 15));
+                pelanqueCheckBox.setSelected((boolean) adherentsTable.getValueAt(row, 16));
+
             }
         });
-        deleteBtn.addActionListener(new ModifieAdherentAction(this));
+        modifyBtn.addActionListener(new ModifieAdherentAction(this));
         closeBtn.addActionListener(this::closeWindow);
     }
 
     public void updateTable() {
-        // filter the old list
-        adherentList = adherentList.stream().filter(adherent -> adherent.adherentID != selectedAdherent.adherentID).collect(Collectors.toList());
-        // update the table
-        int row = adherentsTable.getSelectedRow();
-        // Convert the row index in case the table is sorted or filtered
-        int modelRow = adherentsTable.convertRowIndexToModel(row);
 
-        // Remove row from the model
-        ((DefaultTableModel) adherentsTable.getModel()).removeRow(modelRow);
     }
 }
