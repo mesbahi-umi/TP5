@@ -4,16 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="aac09113-cc42-4af5-a4b9-d62150f85ba5" name="Changes" comment="add action listener to &quot;addAdherent&quot; button">
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/Constants/AdherentColumns.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/Presentation/Views/AddAdherentFrame.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/Presentation/Views/CustomedJFrame.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/Presentation/Views/DeleteAdherentFrame.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/Presentation/Views/ShowAllAdherentFrame.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/Presentation/controllers/DeleteAdherentAction.java" afterDir="false" />
+    <list default="true" id="aac09113-cc42-4af5-a4b9-d62150f85ba5" name="Changes" comment="add a frame for modifying an Adherent">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/Presentation/Views/DatabaseManagementInterface.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/Presentation/Views/DatabaseManagementInterface.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/Presentation/controllers/AddAdherentAction.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/Presentation/controllers/AddAdherentAction.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/Presentation/Views/DatabaseManagementInterface.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/Presentation/Views/HomeFrame.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/Presentation/Views/Home.form" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/Presentation/Views/Home.java" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -65,7 +60,7 @@
 }]]></component>
   <component name="RunManager">
     <configuration name="app" type="Application" factoryName="Application">
-      <option name="MAIN_CLASS_NAME" value="org.example.Presentation.Views.DatabaseManagementInterface" />
+      <option name="MAIN_CLASS_NAME" value="org.example.Presentation.Views.HomeFrame" />
       <module name="TP5" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -95,13 +90,29 @@
       <option name="project" value="LOCAL" />
       <updated>1705930313204</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="delete AdherentDone">
+      <created>1706023451140</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1706023451140</updated>
+    </task>
+    <task id="LOCAL-00004" summary="add a frame for modifying an Adherent">
+      <created>1706023791712</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1706023791712</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="used MVC architecture" />
     <MESSAGE value="add action listener to &quot;addAdherent&quot; button" />
-    <option name="LAST_COMMIT_MESSAGE" value="add action listener to &quot;addAdherent&quot; button" />
+    <MESSAGE value="delete AdherentDone" />
+    <MESSAGE value="add a frame for modifying an Adherent" />
+    <option name="LAST_COMMIT_MESSAGE" value="add a frame for modifying an Adherent" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

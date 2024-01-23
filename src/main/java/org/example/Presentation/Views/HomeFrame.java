@@ -3,30 +3,8 @@ package org.example.Presentation.Views;
 import javax.swing.*;
 import java.awt.*;
 
-/* CREATE TABLE IF NOT EXISTS Adherent (
-    AdherentID INT AUTO_INCREMENT PRIMARY KEY,
-    Nom VARCHAR(255),
-    Prenom VARCHAR(255),
-    DateInscription DATE,
-    Telephone VARCHAR(20),
-    Login VARCHAR(255),
-    MotDePasse VARCHAR(255),
-    MontantAPayer DECIMAL(10, 2),
-    Adresse TEXT,
-    Sexe ENUM('Homme', 'Femme'),
-    -- Assuming the sports are boolean indicating whether a member is interested in them
-    Tennis BOOLEAN,
-    Squash BOOLEAN,
-    Natation BOOLEAN,
-    Athletiesme BOOLEAN,
-    Randomnee BOOLEAN,
-    Foot BOOLEAN,
-    Basket BOOLEAN,
-    Volley BOOLEAN,
-    pelanque BOOLEAN
-);
- */
-public class DatabaseManagementInterface extends JFrame {
+
+public class HomeFrame extends JFrame {
 
 
     /* menu*/
@@ -38,9 +16,9 @@ public class DatabaseManagementInterface extends JFrame {
     JMenuItem afficherMenuItem;
     JMenuItem quitterMenuItem;
     JLabel label;
-    public DatabaseManagementInterface() {
+    public HomeFrame() {
         // Set up the window
-        setTitle("Gestion d'une base de données");
+        setTitle("Gestion d' adherents");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setSize(900, 450); // Adjust the size as needed
 
@@ -53,7 +31,7 @@ public class DatabaseManagementInterface extends JFrame {
         afficherMenuItem = new JMenuItem("Afficher");
         quitterMenuItem = new JMenuItem("Quitter");
 
-        label = new JLabel("TP5 Gestion d'une base de données");
+        label = new JLabel("TP5 : Gestion d' adherents Avec Swing et JDBC");
         label.setFont(new Font("Serif", Font.BOLD, 30));
         label.setForeground(Color.BLUE);
         label.setHorizontalAlignment(JLabel.CENTER);
@@ -99,7 +77,7 @@ public class DatabaseManagementInterface extends JFrame {
 
 
     public static void main(String[] args) {
-        new DatabaseManagementInterface();
+        new HomeFrame();
     }
 
 }
