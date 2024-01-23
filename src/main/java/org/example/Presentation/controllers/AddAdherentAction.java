@@ -2,7 +2,7 @@ package org.example.Presentation.controllers;
 
 import org.example.Beans.Adherent;
 import org.example.Business.DefaultServices;
-import org.example.Presentation.Views.DatabaseManagementInterface;
+import org.example.Presentation.Views.AddAdherentFrame;
 import org.joda.time.DateTime;
 import org.joda.time.format.DateTimeFormat;
 import org.joda.time.format.DateTimeFormatter;
@@ -11,53 +11,54 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 public class AddAdherentAction implements ActionListener {
-    DatabaseManagementInterface databaseManagementInterface;
-    public AddAdherentAction(DatabaseManagementInterface databaseManagementInterface) {
-        this.databaseManagementInterface = databaseManagementInterface;
+    AddAdherentFrame addAdherentFrame;
+
+    public AddAdherentAction(AddAdherentFrame addAdherentFrame) {
+        this.addAdherentFrame = addAdherentFrame;
     }
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        if(!databaseManagementInterface.inputsValide()){
-            databaseManagementInterface.showMessageDialog("All fields are required");
+        if(!addAdherentFrame.inputsValide()){
+            addAdherentFrame.showMessageDialog("All fields are required");
             return ;
         }
         Adherent adherent = new Adherent();
-        adherent.nom = databaseManagementInterface.getNom();
-        adherent.prenom = databaseManagementInterface.getPrenom();
+        adherent.nom = addAdherentFrame.getNom();
+        adherent.prenom = addAdherentFrame.getPrenom();
         // change DateInscription from string to Date
         DateTimeFormatter formatter = DateTimeFormat.forPattern("dd/MM/yyyy");
-        String dateInString = databaseManagementInterface.getDateInscription();
+        String dateInString = addAdherentFrame.getDateInscription();
         DateTime dateTime = DateTime.parse(dateInString, formatter);
         adherent.dateInscription = dateTime.toDate();
 
-        adherent.login = databaseManagementInterface.getLogin();
-        adherent.motDePasse = databaseManagementInterface.getPassword();
-        adherent.montantAPayer = Double.parseDouble(databaseManagementInterface.montantAPayerTextField.getText());
-        adherent.telephone = databaseManagementInterface.getTel();
-        adherent.adresse = databaseManagementInterface.getAddresse();
-        adherent.sexe = databaseManagementInterface.getSexe();
+        adherent.login = addAdherentFrame.getLogin();
+        adherent.motDePasse = addAdherentFrame.getPassword();
+        adherent.montantAPayer = Double.parseDouble(addAdherentFrame.montantAPayerTextField.getText());
+        adherent.telephone = addAdherentFrame.getTel();
+        adherent.adresse = addAdherentFrame.getAddresse();
+        adherent.sexe = addAdherentFrame.getSexe();
 
-        adherent.athletisme = databaseManagementInterface.athletiesmeCheckBox.isSelected();
-        adherent.basket = databaseManagementInterface.basketCheckBox.isSelected();
-        adherent.foot = databaseManagementInterface.footCheckBox.isSelected();
-        adherent.natation = databaseManagementInterface.natationCheckBox.isSelected();
-        adherent.pelanque = databaseManagementInterface.pelanqueCheckBox.isSelected();
-        adherent.squash = databaseManagementInterface.squashCheckBox.isSelected();
-        adherent.tennis = databaseManagementInterface.tennisCheckBox.isSelected();
-        adherent.randonnee = databaseManagementInterface.randomneeCheckBox.isSelected();
-        adherent.volley = databaseManagementInterface.volleyCheckeBox.isSelected();
-        adherent.randonnee = databaseManagementInterface.randomneeCheckBox.isSelected();
+        adherent.athletisme = addAdherentFrame.athletiesmeCheckBox.isSelected();
+        adherent.basket = addAdherentFrame.basketCheckBox.isSelected();
+        adherent.foot = addAdherentFrame.footCheckBox.isSelected();
+        adherent.natation = addAdherentFrame.natationCheckBox.isSelected();
+        adherent.pelanque = addAdherentFrame.pelanqueCheckBox.isSelected();
+        adherent.squash = addAdherentFrame.squashCheckBox.isSelected();
+        adherent.tennis = addAdherentFrame.tennisCheckBox.isSelected();
+        adherent.randonnee = addAdherentFrame.randomneeCheckBox.isSelected();
+        adherent.volley = addAdherentFrame.volleyCheckeBox.isSelected();
+        adherent.randonnee = addAdherentFrame.randomneeCheckBox.isSelected();
 
         if(DefaultServices.getInstance().addAdherent(adherent) != null){
             // show a success message dialog
-            databaseManagementInterface.showMessageDialog("Adherent added successfully");
+            addAdherentFrame.showMessageDialog("Adherent added successfully");
             // reset all fields
-            databaseManagementInterface.resetAllFields();
+//            addAdherentFrame.resetAllFields();
 
         } else {
             // show an error message dialog
-            databaseManagementInterface.showMessageDialog("Error while adding adherent");
+            addAdherentFrame.showMessageDialog("Error while adding adherent");
 
         }
 
